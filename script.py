@@ -6,8 +6,7 @@ from os import rename, mkdir
 def download(link):
     ''' Download the link to downloads '''
 
-    videos = [video for video in Playlist(link)] if 'playlist' in link else [
-        YouTube(link)]
+    videos = [video for video in Playlist(link)] if 'playlist' in link else [YouTube(link)]
 
     for video in videos:
         print(video.title)
@@ -27,14 +26,14 @@ def download(link):
 
 # ---
 
+try:
+    mkdir('downloads')
+except:
+    pass
+    
 while 1:
     link = input('Link:\n|> ')
     mode = input('\nType:\n[1] Video mp4\n[2] Audio mp4\n[3] Audio mp3\n|> ')
-
-    try:
-        mkdir('downloads')
-    except:
-        pass
 
     download(link)
 
